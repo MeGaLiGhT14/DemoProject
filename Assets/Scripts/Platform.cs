@@ -8,6 +8,6 @@ public class Platform : MonoBehaviour
 {
     public void ReachingEdge()
     {
-        transform.parent.GetComponent<Map>().TranspositionPlatform();
+        transform.parent.GetComponent<PlatformSpawner>().TranspositionPlatform();
     }
 }
