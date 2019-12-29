@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour
 {
-    [SerializeField] GameObject _player;
+    [SerializeField] Transform _player;
+
+    [SerializeField] Vector3 _distance;
 
     private void Update()
     {
-        transform.position = _player.transform.position + new Vector3(0 , 2 , -10);
+        transform.position = _player.position + _distance;
     }
 }

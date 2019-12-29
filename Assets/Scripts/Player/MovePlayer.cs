@@ -8,9 +8,7 @@ public class MovePlayer : MonoBehaviour
 {
     [SerializeField] private float _movementForce;
 
-    private Rigidbody rigidbody;
-
-    #region MonoBehaviour
+    private Rigidbody _rigidbody;
 
     private void OnValidate()
     {
@@ -20,13 +18,11 @@ public class MovePlayer : MonoBehaviour
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
-        rigidbody.AddForce(Vector3.right * _movementForce * Time.deltaTime , ForceMode.Force);
+        _rigidbody.AddForce(Vector3.right * _movementForce * Time.deltaTime, ForceMode.Force);
     }
-
-    #endregion
 }

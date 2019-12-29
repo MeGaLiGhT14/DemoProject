@@ -6,8 +6,16 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Platform : MonoBehaviour
 {
-    public void ReachingEdge()
+    [SerializeField] private PlatformSpawner _platformSpawner;
+
+    public void GetPlatformSpawner(PlatformSpawner platformSpawner)
     {
-        transform.parent.GetComponent<PlatformSpawner>().TranspositionPlatform();
+        _platformSpawner = platformSpawner;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<MovePlayer>())
+            _platformSpawner.RecreatePlatform();
     }
 }

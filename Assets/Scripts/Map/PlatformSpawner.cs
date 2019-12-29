@@ -6,22 +6,26 @@ using UnityEngine;
 public class PlatformSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _platformPrefab;
-
     [SerializeField] private GameObject _startPlatform;
 
     private List<GameObject> _platforms = new List<GameObject>();
-    private int _counterOfCreatoedPlatform = 1;
+    private int _createdPlatforms = 1;
 
-    private InteractionSpawner interactionSpawner;
+    private float _platformSize;
 
-    #region MonoBehaviour
+    [SerializeField] private InteractionSpawner _interactionSpawner;
 
     private void OnValidate()
     {
-        if (!_platformPrefab.CompareTag("Platform"))
+        if (!_platformPrefab.GetComponent<Platform>())
+        {
             _platformPrefab = null;
+            _platformSize = 0;
+        }
+        else
+            _platformSize = _platformPrefab.transform.localScale.x;
 
-        if (!_startPlatform.CompareTag("Platform"))
+        if (!_startPlatform.GetComponent<Platform>())
             _startPlatform = null;
         else
             _platforms.Add(_startPlatform);
@@ -29,18 +33,14 @@ public class PlatformSpawner : MonoBehaviour
 
     private void Start()
     {
-        interactionSpawner = GetComponent<InteractionSpawner>();
-
         CreatePlatform();
     }
 
-    #endregion
-
-    public void TranspositionPlatform()
+    public void RecreatePlatform()
     {
         CreatePlatform();
 
-        if (_counterOfCreatoedPlatform > 3)
+        if (_platforms.Count > 3)
         {
             Destroy(_platforms[0].gameObject);
             _platforms.RemoveAt(0);
@@ -49,13 +49,13 @@ public class PlatformSpawner : MonoBehaviour
 
     private void CreatePlatform()
     {
-        Vector3 platformPosition = _counterOfCreatoedPlatform * Vector3.right * 50;
-        GameObject platform = Instantiate(_platformPrefab , platformPosition , Quaternion.identity , transform);
+        Vector3 platformPosition = _createdPlatforms * Vector3.right * _platformSize;
+        GameObject platform = Instantiate(_platformPrefab, platformPosition, Quaternion.identity, transform);
+        platform.GetComponent<Platform>().GetPlatformSpawner(GetComponent<PlatformSpawner>());
 
-            for (int i = 0; i < 9; i++)
-                interactionSpawner.CreateInteraction(platformPosition + Vector3.right * (-20 + i * 5) , platform);
+        _interactionSpawner.CreateInteractionsOnPlatform(platform);
 
         _platforms.Add(platform);
-        _counterOfCreatoedPlatform++;
+        _createdPlatforms++;
     }
 }
