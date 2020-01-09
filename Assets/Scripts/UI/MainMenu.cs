@@ -5,17 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void OnKlickPlay(string scene)
+    public void OnPlayButtonClick(string scene)
     {
         SceneManager.LoadScene(scene);
     }
 
-    public void OnKlickAuthors(Animator animator)
+    public void OnAuthorsButtonClick(Animator animator)
     {
         animator.SetBool("IsOpen" , !animator.GetBool("IsOpen"));
     }
 
-    public void OnKlickExit()
+    public void OnExitButtonClick()
     {
         Application.Quit();
     }

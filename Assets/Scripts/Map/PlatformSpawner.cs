@@ -51,7 +51,7 @@ public class PlatformSpawner : MonoBehaviour
     {
         Vector3 platformPosition = _createdPlatforms * Vector3.right * _platformSize;
         GameObject platform = Instantiate(_platformPrefab, platformPosition, Quaternion.identity, transform);
-        platform.GetComponent<Platform>().GetPlatformSpawner(GetComponent<PlatformSpawner>());
+        platform.GetComponent<Platform>().SetPlatformSpawner(GetComponent<PlatformSpawner>());
 
         _interactionSpawner.CreateInteractionsOnPlatform(platform);
 

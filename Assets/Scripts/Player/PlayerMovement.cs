@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Rigidbody))]
-public class MovePlayer : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _movementForce;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Rigidbody))]
-public class JumpmentPlayer : MonoBehaviour
+public class PlayerJumpment : MonoBehaviour
 {
     [SerializeField] private float _jumpEnergy;
 
@@ -36,6 +36,10 @@ public class JumpmentPlayer : MonoBehaviour
     private void Update()
     {
         if (_onPlatform && Input.GetKeyDown(KeyCode.Space))
+        {
             _rigidbody.AddForce(Vector3.up * _jumpEnergy, ForceMode.Impulse);
+
+            _onPlatform = false;
+        }
     }
 }

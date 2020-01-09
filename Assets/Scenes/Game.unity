@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1367432715}
-  _position: {x: 0, y: 2, z: -10}
+  _distance: {x: 0, y: 2, z: -10}
 --- !u!1 &59885737 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6244173418732750388, guid: cffd1eb083524b04e88c5bed2a81eebf,
@@ -263,6 +263,7 @@ MonoBehaviour:
   _platformPrefab: {fileID: 6244173418732750388, guid: cffd1eb083524b04e88c5bed2a81eebf,
     type: 3}
   _startPlatform: {fileID: 59885737}
+  _interactionSpawner: {fileID: 412921835}
 --- !u!4 &412921834
 Transform:
   m_ObjectHideFlags: 0
@@ -294,6 +295,8 @@ MonoBehaviour:
     type: 3}
   _barrierPrefab: {fileID: 5247011276721964068, guid: b4f214b42344d3141be190acf75450dc,
     type: 3}
+  _minInteractions: 8
+  _maxInteractions: 16
 --- !u!1 &568892285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,6 +1327,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 6852911872447270193, guid: cffd1eb083524b04e88c5bed2a81eebf,
+        type: 3}
+      propertyPath: _platformSpawner
+      value: 
+      objectReference: {fileID: 412921833}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cffd1eb083524b04e88c5bed2a81eebf, type: 3}
 --- !u!1001 &6154954702733231929
