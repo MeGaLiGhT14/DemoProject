@@ -33,7 +33,7 @@ public class PlayerJumpment : MonoBehaviour
         _onPlatform = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_onPlatform && Input.GetKeyDown(KeyCode.Space))
         {

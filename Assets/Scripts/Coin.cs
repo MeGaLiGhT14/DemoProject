@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class Coin : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Purse purse;
-        if(purse = other.GetComponent<Purse>())
+        if (other.TryGetComponent(out Purse purse))
         {
             purse.AddCoin();
-
             Destroy(gameObject);
         }
     }

@@ -17,18 +17,20 @@ public class PlatformSpawner : MonoBehaviour
 
     private void OnValidate()
     {
-        if (!_platformPrefab.GetComponent<Platform>())
+        if (_platformPrefab.GetComponent<Platform>())
+        {
+            _platformSize = _platformPrefab.transform.localScale.x;
+        }
+        else
         {
             _platformPrefab = null;
             _platformSize = 0;
         }
-        else
-            _platformSize = _platformPrefab.transform.localScale.x;
 
-        if (!_startPlatform.GetComponent<Platform>())
-            _startPlatform = null;
-        else
+        if (_startPlatform.GetComponent<Platform>() == null)
             _platforms.Add(_startPlatform);
+        else
+            _startPlatform = null;
     }
 
     private void Start()
