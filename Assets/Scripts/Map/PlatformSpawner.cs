@@ -27,7 +27,7 @@ public class PlatformSpawner : MonoBehaviour
             _platformSize = 0;
         }
 
-        if (_startPlatform.GetComponent<Platform>() == null)
+        if (_startPlatform.GetComponent<Platform>() != null)
             _platforms.Add(_startPlatform);
         else
             _startPlatform = null;
